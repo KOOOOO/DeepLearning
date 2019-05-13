@@ -1,0 +1,50 @@
+C:\Users\goo15>python
+Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> tf.__version__
+'1.13.1'
+>>> hello=tf.constant("hello, Tensorflow!")
+>>> sess=tf.Session()
+2019-05-14 00:47:15.889153: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+>>> print(sess.run(hello))
+b'hello, Tensorflow!'
+>>> # b is bytes literals
+...
+>>> #
+... b is bytes literals
+  File "<stdin>", line 2
+    b is bytes literals
+                      ^
+SyntaxError: invalid syntax
+>>> node1=tf.constant(3.0,tf.float32)
+>>> node2=tf.constant(4.0)
+>>> node3=tf.add(node1,node2)
+>>> print(node1," ",node2," "node3)
+  File "<stdin>", line 1
+    print(node1," ",node2," "node3)
+                                 ^
+SyntaxError: invalid syntax
+>>> print(node1," ",node2," ",node3)
+Tensor("Const_1:0", shape=(), dtype=float32)   Tensor("Const_2:0", shape=(), dtype=float32)   Tensor("Add:0", shape=(), dtype=float32)
+>>> sess=tf.Session()
+>>> print(sess.run([node1,node2]))
+[3.0, 4.0]
+>>> print(sess.run(node3))
+7.0
+>>> a=tf.placeholder(tf.float32)
+>>> b=tf.placegolder(tf.floar32)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'tensorflow' has no attribute 'placegolder'
+>>> b=tf.placeholder(tf.floar32)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'tensorflow' has no attribute 'floar32'
+>>> b=tf.placeholder(tf.float32)
+>>> adder_node=a+b
+>>> print(sess.run(adder_node, feed_dict={a:3,b:4.5}))
+7.5
+>>> print(sess.run(adder_node, feed_dict={a:[1,3],b:[2,4]}))
+[3. 7.]
+>>>
